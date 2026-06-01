@@ -1,0 +1,6 @@
+locations:
+- build:
+    directory: ./dbt_super_store_sales
+  code_source:
+    module_name: dbt_super_store_sales.definitions
+  location_name: dbt_super_store_sales
