@@ -1,0 +1,11 @@
+dbt
+dagster 
+dagster-webserver 
+dagster-dg-cli
+dagster-dbt
+dbt-duckdb
+dagster-dlt
+dagster-powerbi
+dagster-airbyte
+pandas
+dbt-snowflake
