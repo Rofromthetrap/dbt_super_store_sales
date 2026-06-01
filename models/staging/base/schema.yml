@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: base_orders
+    description: "Source Orders table view"
+
+  

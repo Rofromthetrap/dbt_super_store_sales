@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  # - name: super_store_sales
+  #   database: raw
+  #   schema: super_store_sales
+  #   tables:
+  #     - name: airbyte_superstore_returns
+  - name: superstore
+    database: raw
+    schema: super_store_sales
+    tables:
+      - name: airbyte_super_store_orders
+        config:
+          meta:
+            dagster:
+              asset_key: ["airbyte_super_store_orders"]
+
+      - name: airbyte_superstore_people
+        config:
+          meta:
+            dagster:
+              asset_key: ["airbyte_superstore_people"]
+
+      - name: airbyte_superstore_returns
+        config:
+          meta:
+            dagster:
+              asset_key: ["airbyte_superstore_returns"]
