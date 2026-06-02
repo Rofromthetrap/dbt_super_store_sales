@@ -3,19 +3,19 @@ type: dagster_airbyte.AirbyteCloudWorkspaceComponent
 
 ## For development
 
-# attributes:
-#   workspace:
-#     workspace_id: '{{ env.AIRBYTE_WORKSPACE_ID }}'
-#     client_id: '{{ env.AIRBYTE_CLIENT_ID }}'
-#     client_secret: '{{ env.AIRBYTE_CLIENT_SECRET }}'
-#   connection_selector:
-#     by_name:
-#       - gcs_sss_to_sno_sss
-#   translation:
-#     group_name: airbyte_data
-#     description: "Loads data from Airbyte connection"
+attributes:
+  workspace:
+    workspace_id: '{{ env.AIRBYTE_WORKSPACE_ID }}'
+    client_id: '{{ env.AIRBYTE_CLIENT_ID }}'
+    client_secret: '{{ env.AIRBYTE_CLIENT_SECRET }}'
+  connection_selector:
+    by_name:
+      - gcs_sss_to_sno_sss
+  translation:
+    group_name: airbyte_data
+    description: "Loads data from Airbyte connection"
 
-## For production
+## For deployment with Github actions
 
 # attributes:
 #   workspace:
@@ -32,17 +32,17 @@ type: dagster_airbyte.AirbyteCloudWorkspaceComponent
 
 ## Universal
 
-attributes:
-  workspace:
-    workspace_id:
-      env: AIRBYTE_WORKSPACE_ID
-    client_id:
-      env: AIRBYTE_CLIENT_ID
-    client_secret:
-      env: AIRBYTE_CLIENT_SECRET
-  connection_selector:
-    by_name:
-      - gcs_sss_to_sno_sss
-  translation:
-    group_name: airbyte_data
-    description: "Loads data from Airbyte connection"
+# attributes:
+#   workspace:
+#     workspace_id:
+#       env: AIRBYTE_WORKSPACE_ID
+#     client_id:
+#       env: AIRBYTE_CLIENT_ID
+#     client_secret:
+#       env: AIRBYTE_CLIENT_SECRET
+#   connection_selector:
+#     by_name:
+#       - gcs_sss_to_sno_sss
+#   translation:
+#     group_name: airbyte_data
+#     description: "Loads data from Airbyte connection"

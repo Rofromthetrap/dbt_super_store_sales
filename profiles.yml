@@ -1,4 +1,4 @@
-##Use when deploying. Native github env syntax 
+##Use when deploying with Github actions. Native github env syntax 
 
 # snowflake_super_store_sales:
 #   outputs:
@@ -14,7 +14,24 @@
 #       threads: 4
 #   target: dev
 
-###Use when devloping. Native dbt env syntax 
+# ###Use when devloping. Native dbt env syntax 
+
+snowflake_super_store_sales:
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
+      schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
+      threads: 4
+  target: dev
+
+
+## Universal syntax
 
 # snowflake_super_store_sales:
 #   outputs:
@@ -31,18 +48,30 @@
 #   target: dev
 
 
-## Universal syntax
 
-snowflake_super_store_sales:
-  outputs:
-    dev:
-      type: snowflake
-      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
-      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
-      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
-      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
-      schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
-      user: "{{ env_var('SNOWFLAKE_USER') }}"
-      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
-      threads: 4
-  target: dev
+### Merged
+
+# snowflake_super_store_sales:
+#   outputs:
+#     dev:
+#       type: snowflake
+#       account: "${SNOWFLAKE_ACCOUNT}"
+#       database: "${SNOWFLAKE_DATABASE}"
+#       password: "${SNOWFLAKE_PASSWORD}"
+#       role: "${SNOWFLAKE_ROLE}"
+#       schema: "${SNOWFLAKE_SCHEMA}"
+#       user: "${SNOWFLAKE_USER}"
+#       warehouse: "${SNOWFLAKE_WAREHOUSE}"
+
+# ###Use when devloping. Native dbt env syntax 
+#     prod:
+#       type: snowflake
+#       account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+#       database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+#       password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+#       role: "{{ env_var('SNOWFLAKE_ROLE') }}"
+#       schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
+#       user: "{{ env_var('SNOWFLAKE_USER') }}"
+#       warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
+#       threads: 4
+#   target: dev
