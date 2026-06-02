@@ -2,8 +2,8 @@ type: dbt_super_store_sales.defs.powerbi.component.CustomPowerBIWorkspaceCompone
 
 attributes:
   workspace:
-    workspace_id: "{{ env.POWER_BI_WORKSPACE_ID }}"
+    workspace_id: '{{ env.POWER_BI_WORKSPACE_ID }}'
     credentials:
-      client_id: "{{ env.POWER_BI_CLIENT_ID }}"
-      client_secret: "{{ env.POWER_BI_CLIENT_SECRET }}"
-      tenant_id: "{{ env.POWER_BI_TENANT_ID }}"
+      client_id: '{{ env.POWER_BI_CLIENT_ID }}'
+      client_secret: '{{ env.POWER_BI_CLIENT_SECRET }}'
+      tenant_id: '{{ env.POWER_BI_TENANT_ID }}'
