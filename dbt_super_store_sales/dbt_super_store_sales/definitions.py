@@ -4,9 +4,10 @@ load_dotenv()
 import os
 from pathlib import Path
 
-from dagster import Definitions
+from dagster import Definitions, EnvVar
 from dagster_dbt import DbtCliResource
 from dagster.components import build_component_defs
+from dagster_powerbi import PowerBIWorkspace, PowerBIServicePrincipal
 
 from dbt_super_store_sales.assets import dbt_super_store_sales_dbt_assets
 from dbt_super_store_sales.project import dbt_super_store_sales_project
@@ -66,6 +67,7 @@ defs = Definitions.merge(
         schedules=schedules,
         resources={
             "dbt": DbtCliResource(project_dir=dbt_super_store_sales_project),
+          
         },
     )
 )
