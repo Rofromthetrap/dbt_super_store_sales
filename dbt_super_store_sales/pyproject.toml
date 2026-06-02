@@ -8,8 +8,10 @@ dependencies = [
     "dagster",
     "dagster-cloud",
     "dagster-dbt",
+    "dagster-airbyte",
     "dbt-core<1.12",
     "dbt-snowflake<1.12",
+    "python-dotenv>=1.2.2",
 ]
 
 [project.optional-dependencies]
@@ -25,3 +27,8 @@ build-backend = "setuptools.build_meta"
 module_name = "dbt_super_store_sales.definitions"
 code_location_name = "dbt_super_store_sales"
 
+[tool.dg]
+directory_type = "project"
+
+[tool.dg.project]
+root_module = "dbt_super_store_sales"
