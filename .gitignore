@@ -5,3 +5,4 @@ logs/
 dbt_internal_packages/
 .env
 venv_dbt_sss
+dbt_super_store_sales/dbt_super_store_sales/__pycache__
