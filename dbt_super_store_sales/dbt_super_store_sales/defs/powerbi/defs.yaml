@@ -1,8 +1,19 @@
-type: dbt_super_store_sales.defs.powerbi.component.CustomPowerBIWorkspaceComponent
+# type: dbt_super_store_sales.defs.powerbi.component.CustomPowerBIWorkspaceComponent
 
+# attributes:
+#   workspace:
+#     workspace_id: '{{ env.POWER_BI_WORKSPACE_ID }}'
+#     client_id: '{{ env.POWER_BI_CLIENT_ID }}'
+#     client_secret: '{{ env.POWER_BI_CLIENT_SECRET }}'
+#     tenant_id: '{{ env.POWER_BI_TENANT_ID }}'
+
+
+type: dbt_super_store_sales.defs.powerbi.component.CustomPowerBIWorkspaceComponent
 attributes:
   workspace:
     workspace_id: '{{ env.POWER_BI_WORKSPACE_ID }}'
-    client_id: '{{ env.POWER_BI_CLIENT_ID }}'
-    client_secret: '{{ env.POWER_BI_CLIENT_SECRET }}'
-    tenant_id: '{{ env.POWER_BI_TENANT_ID }}'
+    credentials:
+      type: dagster_powerbi.PowerBIServicePrincipal
+      client_id: '{{ env.POWER_BI_CLIENT_ID }}'
+      client_secret: '{{ env.POWER_BI_CLIENT_SECRET }}'
+      tenant_id: '{{ env.POWER_BI_TENANT_ID }}'
