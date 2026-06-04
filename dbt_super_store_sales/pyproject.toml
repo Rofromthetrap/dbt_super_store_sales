@@ -9,6 +9,7 @@ dependencies = [
     "dagster-cloud",
     "dagster-dbt",
     "dagster-airbyte",
+    "dagster-powerbi",
     "dbt-core<1.12",
     "dbt-snowflake<1.12",
     "python-dotenv>=1.2.2",

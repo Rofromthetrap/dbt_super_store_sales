@@ -12,13 +12,24 @@ class CustomDagsterDbtTranslator(DagsterDbtTranslator):
         name = dbt_resource_props.get("name")
 
         if resource_type == "source":
+            # manifest source identifiers include the full source identifier names
             mapping = {
-                "super_store_orders": AssetKey(["airbytecloud_super_store_orders"]),
-                "super_store_people": AssetKey(["airbytecloud_super_store_people"]),
-                "superstore_returns": AssetKey(["airbytecloud_superstore_returns"]),
+                "airbyte_super_store_orders": AssetKey(["airbytecloud_super_store_orders"]),
+                "airbyte_superstore_people": AssetKey(["airbytecloud_super_store_people"]),
+                "airbyte_superstore_returns": AssetKey(["airbytecloud_superstore_returns"]),
             }
             if name in mapping:
                 return mapping[name]
+
+        # Ensure the base models have simple asset keys so the source -> base lineage displays
+        if resource_type == "model":
+            model_mapping = {
+                "base_orders": AssetKey(["base_orders"]),
+                "base_people": AssetKey(["base_people"]),
+                "base_returns": AssetKey(["base_returns"]),
+            }
+            if name in model_mapping:
+                return model_mapping[name]
 
         return super().get_asset_key(dbt_resource_props)
 

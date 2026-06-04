@@ -493,6 +493,20 @@ wheels = [
 ]
 
 [[package]]
+name = "dagster-airbyte"
+version = "0.29.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "dagster" },
+    { name = "python-dateutil" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/08/39/280a6da5983c76e974e666b7c614152cc907aba87bb71df745584e3070e9/dagster_airbyte-0.29.7.tar.gz", hash = "sha256:7ed8d03b51a9c7b7401433a27ad6c53a0c4c7ce996df567d39bec750fe80ae43", size = 325831, upload-time = "2026-05-28T16:46:36.449Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9e/f0/edf5f4dfc4b3f9cd2fdbfdd014d38b43fb85be10c9208cd25857a421bade/dagster_airbyte-0.29.7-py3-none-any.whl", hash = "sha256:4364c380278ba913caf1fdbc0105335f0b0281cb25eb739243f2f485dcb07742", size = 116512, upload-time = "2026-05-28T16:46:34.817Z" },
+]
+
+[[package]]
 name = "dagster-cloud"
 version = "1.13.7"
 source = { registry = "https://pypi.org/simple" }
@@ -579,6 +593,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/1c/9e/e8791b73af7a1dd83ed39183dfa890c9a300f796c4333c2f3932b3a145d0/dagster_pipes-1.13.7.tar.gz", hash = "sha256:3da63a8829cd00cdb162ea75d10ba8fab2a641230bd019b9ac1ceeec223a068c", size = 149656, upload-time = "2026-05-28T16:35:14.442Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ec/af/021709df00fdccfbe8100f7c61741a956754fd26fd65990e4ec695552495/dagster_pipes-1.13.7-py3-none-any.whl", hash = "sha256:2dd72fdbcfb6994b6e2e467266912a13148496e3c56301b982815754508a9b87", size = 20219, upload-time = "2026-05-28T16:35:13.18Z" },
+]
+
+[[package]]
+name = "dagster-powerbi"
+version = "0.29.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "dagster" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/0f/02/58f639bf9cb37bafe0a79fb4f676fb42c596e33e38a6460e40934387e97e/dagster_powerbi-0.29.7.tar.gz", hash = "sha256:039de1ec06c671d082c1223aced646ac442f4ff75b825636dae2259fff5bbbba", size = 203930, upload-time = "2026-05-28T16:46:52.941Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/19/3d/493825f59c51912b33855394c76cd744bc62641d68f2d2c9408332a2dcef/dagster_powerbi-0.29.7-py3-none-any.whl", hash = "sha256:11c979112f97ac6b80ead1de1c1828985c4541021e4449e6bdb24693d8d291ab", size = 17883, upload-time = "2026-05-28T16:46:51.917Z" },
 ]
 
 [[package]]
@@ -768,8 +794,10 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "dagster" },
+    { name = "dagster-airbyte" },
     { name = "dagster-cloud" },
     { name = "dagster-dbt" },
+    { name = "dagster-powerbi" },
     { name = "dbt-core" },
     { name = "dbt-snowflake" },
     { name = "python-dotenv" },
@@ -783,8 +811,10 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "dagster" },
+    { name = "dagster-airbyte" },
     { name = "dagster-cloud" },
     { name = "dagster-dbt" },
+    { name = "dagster-powerbi" },
     { name = "dagster-webserver", marker = "extra == 'dev'" },
     { name = "dbt-core", specifier = "<1.12" },
     { name = "dbt-snowflake", specifier = "<1.12" },
