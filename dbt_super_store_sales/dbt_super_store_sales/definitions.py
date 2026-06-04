@@ -75,12 +75,20 @@ except NameError:
     pass
 
 # Attempt to load YAML component definitions (Power BI, etc.) from defs/
-# If loading fails (missing env vars/credentials), continue with Python-only defs.
+# If loading fails, behavior is controlled by env var `LOAD_COMPONENT_DEFS_FAIL_FAST`.
+# - If true, re-raise the exception so CI / GitHub Actions will fail the import and surface the error.
+# - If false (default), log the exception and continue (useful for local `dg dev`).
 component_defs_loaded = None
+_LOAD_COMPONENT_DEFS_FAIL_FAST = os.getenv("LOAD_COMPONENT_DEFS_FAIL_FAST", "false").lower() in ("1", "true", "yes")
 try:
     component_defs_loaded = build_component_defs(components_root=Path(__file__).parent / "defs")
 except Exception as e:
-    # keep import-time safe; YAML components may require credentials not present locally
+    import logging
+    logging.getLogger(__name__).exception("Failed to load component defs from defs/: %s", e)
+    if _LOAD_COMPONENT_DEFS_FAIL_FAST:
+        # Surface the error to CI by re-raising
+        raise
+    # otherwise continue without the component defs (default behavior)
     component_defs_loaded = None
 # Extract assets/resources from loaded component defs and then remove the Definitions
 component_assets = []

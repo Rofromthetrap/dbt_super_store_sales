@@ -13,7 +13,6 @@ attributes:
   workspace:
     workspace_id: '{{ env.POWER_BI_WORKSPACE_ID }}'
     credentials:
-      type: dagster_powerbi.PowerBIServicePrincipal
       client_id: '{{ env.POWER_BI_CLIENT_ID }}'
       client_secret: '{{ env.POWER_BI_CLIENT_SECRET }}'
       tenant_id: '{{ env.POWER_BI_TENANT_ID }}'
