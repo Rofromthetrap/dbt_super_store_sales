@@ -1,0 +1,101 @@
+Project Super_Store_Sales {
+    database_type: 'Snowflake'
+    Note: 'Tableaue Super Store Sales'
+}
+
+//Dimensions
+
+Table staging.dim_shipping_status {
+  ship_status_key varchar(20) [primary key]
+  ship_mode varchar(20)
+
+  records (ship_status_key, ship_mode) {
+  1, 'First Class'
+  2, 'Same Day'
+  3, 'Second Class'
+  4, 'Standard Class'
+
+}
+}
+
+Table staging.dim_employees {
+
+  manager VARCHAR
+  region VARCHAR
+  employee_region_key int [primary key]
+
+  records(manager, region,employee_region_key) {
+    'Sadie Pawthorne','West',1
+    'Chuck Magee','East',2
+    'Roxanne Rodriguez','Central',3
+    'Fred Suzuki','South',4
+    }
+    
+}
+
+Table staging.dim_customer {
+
+  customer_key varchar
+  customer_name varchar
+  segment varchar
+  postal_code varchar
+  region_id varchar
+    
+}
+
+Table staging.dim_region {
+
+  country_region VARCHAR(100) [not null]
+  city VARCHAR(100) [not null]
+  state_province VARCHAR(100)
+  postal_code VARCHAR(20)
+  region_key VARCHAR(50) [not null]
+    
+}
+
+
+Table staging.dim_product {
+
+  product_key varchar
+  product_category varchar
+  product_subcategory varchar
+  product_name varchar
+    
+}
+
+
+//Facts
+
+Table staging.fct_superstore_orders {
+  
+  row_key integer [not null, primary key, increment]
+  order_id varchar(50) [not null]
+  order_date date [not null]
+  ship_date date [not null]
+  ship_status_key VARCHAR(20) [not null]
+  customer_key VARCHAR(50) [not null]
+  product_key VARCHAR(50) [not null]
+  sales DECIMAL(10, 2) [not null]
+  quantity INT [not null]
+  discount DECIMAL(5, 2) [not null]
+  profit DECIMAL(10, 2) [not null]
+}
+
+
+Table staging.fct_returns {
+  order_id varchar(20) [primary key]
+  returned varchar(3)
+
+}
+
+
+Ref: "staging"."fct_returns"."order_id" - "staging"."fct_superstore_orders"."order_id"
+
+
+//Ref: "staging"."dim_employees"."region_key" < "staging"."fct_superstore_orders"."region_key"
+
+Ref: "staging"."dim_shipping_status"."ship_status_key" < "staging"."fct_superstore_orders"."ship_status_key"
+
+Ref: "staging"."dim_product"."product_key" < "staging"."fct_superstore_orders"."product_key"
+
+Ref: "staging"."dim_customer"."customer_key" < "staging"."fct_superstore_orders"."customer_key"
