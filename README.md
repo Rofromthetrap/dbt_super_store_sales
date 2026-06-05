@@ -19,6 +19,14 @@ A demo project showing how to integrate dbt models, Airbyte sources, and a Power
 This diagram shows the end-to-end flow: Airbyte Cloud syncs source data into Snowflake; dbt transforms produce staging and mart models; Dagster (local or Dagster Plus) orchestrates dbt runs and exposes assets; Dagster triggers Power BI semantic model refreshes.
 
 
+## Dagster Lineage View
+
+![BI Report Diagram](images\dagster_lineage_view.png)
+
+
+## Power BI Report
+
+![BI Report Diagram](images/super_store_sales.png)
 
 Note:
 This project was created in assistance with A.I
