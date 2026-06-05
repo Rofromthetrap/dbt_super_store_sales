@@ -21,7 +21,7 @@ This diagram shows the end-to-end flow: Airbyte Cloud syncs source data into Sno
 
 ## Dagster Lineage View
 
-![BI Report Diagram](images\dagster_lineage_view.png)
+![Dagster Lineage View Diagram](images/dagster_lineage_view.png)
 
 
 ## Power BI Report
